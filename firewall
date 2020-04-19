@@ -1,6 +1,7 @@
 yum -y install firewalld
 chkconfig firewalld on
-service firewalld startsed -i 's/#Port 22/Port 1022/g' /etc/ssh/sshd_config
+service firewalld restart
+sed -i 's/#Port 22/Port 1022/g' /etc/ssh/sshd_config
 firewall-cmd --zone=trusted --permanent --add-source=52.41.52.34
 firewall-cmd --zone=trusted --permanent --add-source=52.8.201.128
 firewall-cmd --zone=trusted --permanent --add-source=52.60.138.31
