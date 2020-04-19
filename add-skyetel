@@ -1,0 +1,130 @@
+#!/bin/bash
+# version 0.1.0 add-skyetel-trunks
+
+
+MYPW="passw0rd"
+
+LASTTRUNKID=`mysql -sN -u root asterisk -e "select trunkid from trunks where trunkid<70 order by trunkid desc limit 1"`
+if [ -z "$LASTTRUNKID" ]; then
+ LASTTRUNKID=0
+fi
+
+NEXTTRUNKID=$((LASTTRUNKID+1))
+echo "Adding Skyetel-1 trunk: term.skyetel.com..."
+TRPEER="tr-peer-$NEXTTRUNKID"
+mysql -u root asterisk -e "INSERT INTO trunks (trunkid,tech,channelid,name,outcid,keepcid,maxchans,failscript,dialoutprefix,usercontext,provider,disabled) VALUES ($NEXTTRUNKID,'sip','Skyetel-1','Skyetel-1','','off','','','','','','off');"
+mysql -u root asterisk -e "INSERT INTO sip VALUES ('$TRPEER','account','Skyetel-1',2)"
+mysql -u root asterisk -e "INSERT INTO sip VALUES ('$TRPEER','allow','g722&ulaw',10)"
+mysql -u root asterisk -e "INSERT INTO sip VALUES ('$TRPEER','disallow','all',7)"
+mysql -u root asterisk -e "INSERT INTO sip VALUES ('$TRPEER','host','term.skyetel.com',6)"
+mysql -u root asterisk -e "INSERT INTO sip VALUES ('$TRPEER','type','friend',3)"
+mysql -u root asterisk -e "INSERT INTO sip VALUES ('$TRPEER','context','from-trunk',8)"
+mysql -u root asterisk -e "INSERT INTO sip VALUES ('$TRPEER','qualify','yes',4)"
+mysql -u root asterisk -e "INSERT INTO sip VALUES ('$TRPEER','dtmfmode','rfc2833',9)"
+mysql -u root asterisk -e "INSERT INTO sip VALUES ('$TRPEER','insecure','port,invite',5)"
+
+NEXTTRUNKID=$((NEXTTRUNKID+1))
+echo "Adding Skyetel-NW trunk..."
+TRPEER="tr-peer-$NEXTTRUNKID"
+mysql -u root asterisk -e "INSERT INTO trunks (trunkid,tech,channelid,name,outcid,keepcid,maxchans,failscript,dialoutprefix,usercontext,provider,disabled) VALUES ($NEXTTRUNKID,'sip','Skyetel-NW','Skyetel-NW','','off','','','','','','off');"
+mysql -u root asterisk -e "INSERT INTO sip VALUES ('$TRPEER','account','Skyetel-NW',2)"
+mysql -u root asterisk -e "INSERT INTO sip VALUES ('$TRPEER','allow','g722&ulaw',10)"
+mysql -u root asterisk -e "INSERT INTO sip VALUES ('$TRPEER','disallow','all',7)"
+mysql -u root asterisk -e "INSERT INTO sip VALUES ('$TRPEER','host','52.41.52.34',6)"
+mysql -u root asterisk -e "INSERT INTO sip VALUES ('$TRPEER','type','friend',3)"
+mysql -u root asterisk -e "INSERT INTO sip VALUES ('$TRPEER','context','from-trunk',8)"
+mysql -u root asterisk -e "INSERT INTO sip VALUES ('$TRPEER','qualify','yes',4)"
+mysql -u root asterisk -e "INSERT INTO sip VALUES ('$TRPEER','dtmfmode','rfc2833',9)"
+mysql -u root asterisk -e "INSERT INTO sip VALUES ('$TRPEER','insecure','port,invite',5)"
+
+NEXTTRUNKID=$((NEXTTRUNKID+1))
+echo "Adding Skyetel-SW trunk..."
+TRPEER="tr-peer-$NEXTTRUNKID"
+mysql -u root asterisk -e "INSERT INTO trunks (trunkid,tech,channelid,name,outcid,keepcid,maxchans,failscript,dialoutprefix,usercontext,provider,disabled) VALUES ($NEXTTRUNKID,'sip','Skyetel-SW','Skyetel-SW','','off','','','','','','off');"
+mysql -u root asterisk -e "INSERT INTO sip VALUES ('$TRPEER','account','Skyetel-SW',2)"
+mysql -u root asterisk -e "INSERT INTO sip VALUES ('$TRPEER','allow','g722&ulaw',10)"
+mysql -u root asterisk -e "INSERT INTO sip VALUES ('$TRPEER','disallow','all',7)"
+mysql -u root asterisk -e "INSERT INTO sip VALUES ('$TRPEER','host','52.8.201.128',6)"
+mysql -u root asterisk -e "INSERT INTO sip VALUES ('$TRPEER','type','friend',3)"
+mysql -u root asterisk -e "INSERT INTO sip VALUES ('$TRPEER','context','from-trunk',8)"
+mysql -u root asterisk -e "INSERT INTO sip VALUES ('$TRPEER','qualify','yes',4)"
+mysql -u root asterisk -e "INSERT INTO sip VALUES ('$TRPEER','dtmfmode','rfc2833',9)"
+mysql -u root asterisk -e "INSERT INTO sip VALUES ('$TRPEER','insecure','port,invite',5)"
+
+NEXTTRUNKID=$((NEXTTRUNKID+1))
+echo "Adding Skyetel-SE trunk..."
+TRPEER="tr-peer-$NEXTTRUNKID"
+mysql -u root asterisk -e "INSERT INTO trunks (trunkid,tech,channelid,name,outcid,keepcid,maxchans,failscript,dialoutprefix,usercontext,provider,disabled) VALUES ($NEXTTRUNKID,'sip','Skyetel-SE','Skyetel-SE','','off','','','','','','off');"
+mysql -u root asterisk -e "INSERT INTO sip VALUES ('$TRPEER','account','Skyetel-SE',2)"
+mysql -u root asterisk -e "INSERT INTO sip VALUES ('$TRPEER','allow','g722&ulaw',10)"
+mysql -u root asterisk -e "INSERT INTO sip VALUES ('$TRPEER','disallow','all',7)"
+mysql -u root asterisk -e "INSERT INTO sip VALUES ('$TRPEER','host','50.17.48.216',6)"
+mysql -u root asterisk -e "INSERT INTO sip VALUES ('$TRPEER','type','friend',3)"
+mysql -u root asterisk -e "INSERT INTO sip VALUES ('$TRPEER','context','from-trunk',8)"
+mysql -u root asterisk -e "INSERT INTO sip VALUES ('$TRPEER','qualify','yes',4)"
+mysql -u root asterisk -e "INSERT INTO sip VALUES ('$TRPEER','dtmfmode','rfc2833',9)"
+mysql -u root asterisk -e "INSERT INTO sip VALUES ('$TRPEER','insecure','port,invite',5)"
+
+NEXTTRUNKID=$((NEXTTRUNKID+1))
+echo "Adding Skyetel-NE trunk..."
+TRPEER="tr-peer-$NEXTTRUNKID"
+mysql -u root asterisk -e "INSERT INTO trunks (trunkid,tech,channelid,name,outcid,keepcid,maxchans,failscript,dialoutprefix,usercontext,provider,disabled) VALUES ($NEXTTRUNKID,'sip','Skyetel-NE','Skyetel-NE','','off','','','','','','off');"
+mysql -u root asterisk -e "INSERT INTO sip VALUES ('$TRPEER','account','Skyetel-NE',2)"
+mysql -u root asterisk -e "INSERT INTO sip VALUES ('$TRPEER','allow','g722&ulaw',10)"
+mysql -u root asterisk -e "INSERT INTO sip VALUES ('$TRPEER','disallow','all',7)"
+mysql -u root asterisk -e "INSERT INTO sip VALUES ('$TRPEER','host','52.60.138.31',6)"
+mysql -u root asterisk -e "INSERT INTO sip VALUES ('$TRPEER','type','friend',3)"
+mysql -u root asterisk -e "INSERT INTO sip VALUES ('$TRPEER','context','from-trunk',8)"
+mysql -u root asterisk -e "INSERT INTO sip VALUES ('$TRPEER','qualify','yes',4)"
+mysql -u root asterisk -e "INSERT INTO sip VALUES ('$TRPEER','dtmfmode','rfc2833',9)"
+mysql -u root asterisk -e "INSERT INTO sip VALUES ('$TRPEER','insecure','port,invite',5)"
+
+NEXTTRUNKID=$((NEXTTRUNKID+1))
+echo "Adding Skyetel-SRV trunk..."
+TRPEER="tr-peer-$NEXTTRUNKID"
+mysql -u root asterisk -e "INSERT INTO trunks (trunkid,tech,channelid,name,outcid,keepcid,maxchans,failscript,dialoutprefix,usercontext,provider,disabled) VALUES ($NEXTTRUNKID,'sip','Skyetel-NE','Skyetel-NE','','off','','','','','','off');"
+mysql -u root asterisk -e "INSERT INTO sip VALUES ('$TRPEER','account','Skyetel-SRV',2)"
+mysql -u root asterisk -e "INSERT INTO sip VALUES ('$TRPEER','allow','g722&ulaw',10)"
+mysql -u root asterisk -e "INSERT INTO sip VALUES ('$TRPEER','disallow','all',7)"
+mysql -u root asterisk -e "INSERT INTO sip VALUES ('$TRPEER','host','srv.skyetel.com',6)"
+mysql -u root asterisk -e "INSERT INTO sip VALUES ('$TRPEER','type','friend',3)"
+mysql -u root asterisk -e "INSERT INTO sip VALUES ('$TRPEER','context','from-trunk',8)"
+mysql -u root asterisk -e "INSERT INTO sip VALUES ('$TRPEER','qualify','yes',4)"
+mysql -u root asterisk -e "INSERT INTO sip VALUES ('$TRPEER','dtmfmode','rfc2833',9)"
+mysql -u root asterisk -e "INSERT INTO sip VALUES ('$TRPEER','insecure','port,invite',5)"
+
+
+NEXTTRUNKID=$((NEXTTRUNKID+1))
+echo "Adding Skyetel-EU trunk..."
+TRPEER="tr-peer-$NEXTTRUNKID"
+mysql -u root asterisk -e "INSERT INTO trunks (trunkid,tech,channelid,name,outcid,keepcid,maxchans,failscript,dialoutprefix,usercontext,provider,disabled) VALUES ($NEXTTRUNKID,'sip','Skyetel-EU','Skyetel-EU','','off','','','','','','off');"
+mysql -u root asterisk -e "INSERT INTO sip VALUES ('$TRPEER','account','Skyetel-EU',2)"
+mysql -u root asterisk -e "INSERT INTO sip VALUES ('$TRPEER','allow','g722&ulaw',10)"
+mysql -u root asterisk -e "INSERT INTO sip VALUES ('$TRPEER','disallow','all',7)"
+mysql -u root asterisk -e "INSERT INTO sip VALUES ('$TRPEER','host','35.156.192.164',6)"
+mysql -u root asterisk -e "INSERT INTO sip VALUES ('$TRPEER','type','friend',3)"
+mysql -u root asterisk -e "INSERT INTO sip VALUES ('$TRPEER','context','from-trunk',8)"
+mysql -u root asterisk -e "INSERT INTO sip VALUES ('$TRPEER','qualify','yes',4)"
+mysql -u root asterisk -e "INSERT INTO sip VALUES ('$TRPEER','dtmfmode','rfc2833',9)"
+mysql -u root asterisk -e "INSERT INTO sip VALUES ('$TRPEER','insecure','port,invite',5)"
+
+mysql -u root asterisk -e "update admin set value='true' where variable='need_reload'"
+fwconsole reload
+firewall-cmd --zone=trusted --permanent --add-source=52.41.52.34
+firewall-cmd --zone=trusted --permanent --add-source=52.8.201.128
+firewall-cmd --zone=trusted --permanent --add-source=52.60.138.31
+firewall-cmd --zone=trusted --permanent --add-source=50.17.48.216
+firewall-cmd --zone=trusted --permanent --add-source=35.156.192.164
+firewall-cmd --zone=trusted --permanent --add-source=34.209.216.231
+firewall-cmd --zone=trusted --permanent --add-source=52.8.194.208
+firewall-cmd --zone=trusted --permanent --add-source=34.200.114.108
+firewall-cmd --zone=trusted --permanent --add-source=52.14.37.123
+firewall-cmd --zone=trusted --permanent --add-source=52.32.223.28
+firewall-cmd --zone=trusted --permanent --add-source=52.4.178.107
+firewall-cmd --zone=public --permanent --remove-service=ssh
+firewall-cmd --zone=public --permanent --remove-service=http
+firewall-cmd --zone=public --permanent --add-port=10022/tcp
+firewall-cmd --reload
+echo " "
+echo "All Skyetel trunks have been added."
+### finished adding Skyetel Trunks
