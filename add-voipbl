@@ -1,3 +1,4 @@
+#!/bin/bash
 cd /etc
 wget http://incrediblepbx.com/voipbl-firewalld.tar.gz
 tar zxvf voipbl-firewalld.tar.gz
@@ -5,3 +6,4 @@ rm -f voipbl-firewalld.tar.gz
 chmod +x /etc/update-voipbl.sh
 echo "20 3 * * * root /etc/update-voipbl.sh >/dev/null 2>&1" >> /etc/crontab
 /etc/update-voipbl.sh
+sleep 5
