@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<service>
+<short>Skyetel</short>
+<descriptoin>Skyetel IP addresses</description>
+<source address="52.41.52.34"/>
+<source address="52.8.201.128"/>
+<source address="52.60.138.31"/>
+<source address="50.17.48.216"/>
+<source address="52.8.201.128"/>
+<source address="52.41.52.34"/>
+<source address="50.17.48.216"/>
+<source address="52.32.223.28"/>
+<source address="52.4.178.107"/>
+<source address="34.209.216.231"/>
+<source address="52.8.194.208"/>
+<source address="34.200.114.108"/>
+<source address="52.14.37.123"/>
